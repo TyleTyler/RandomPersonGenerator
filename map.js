@@ -25,4 +25,6 @@ music.set(7, "Jazz")
 music.set(8, "Folk")
 music.set(9,"R&B")
 music.set(10, "Reggae")
+
+
 export{colors, music}
