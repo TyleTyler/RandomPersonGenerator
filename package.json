@@ -16,5 +16,8 @@
     "url": "https://github.com/TylenolSniffinTyler/JSON-and-AJAX-practice/issues"
   },
   "homepage": "https://github.com/TylenolSniffinTyler/JSON-and-AJAX-practice#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }
