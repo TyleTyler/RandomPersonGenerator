@@ -11,20 +11,24 @@
     <h1>Profile Generator</h1>
     <div id = "main">
         <div class = "secondMain">
-            <div class = "pfp"> </div>
+            <div class = "pfp"> <img id = "pfp"></div>
             <div class = "infoHub"> 
                 <div class = "nameAge">
                     <div id = "nameEl"> Name:</div>
-                    <div> Age:</div>
+                    <div id = "ageEl"> Age:</div>
                 </div>
                 <div class = "favorites">
-                    <div>Favorite Color: </div>
-                    <div>Favorite Music Genre: </div>
+                    <div id = "color">Favorite Color: </div>
+                    <div id = "genre">Favorite Music Genre: </div>
                 </div>  
             </div>
-            <div class="location">City: </div>
+            <div class="location" id = "city">Location: </div>
         </div>
+        <button id = "refreshBut" type="button" class = "refBut">
+                Refresh 
+            <img class="refresh" src="refresh.png">
+        </button>
     </div>
 </body>
-    <script src="access.js"></script>
-</html>
+    <script type="module" src="access.js"></script>
+</html>C:\Users\willy\OneDrive\Desktop\Code Projects or whatever\JSON and AJAX practice
