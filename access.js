@@ -1,52 +1,27 @@
 
 const mergeImages = require('merge-images-v2')
+const fetch = require('cross-fetch');
 
-let skin = document.getElementById('pfp')
-let refresh = document.getElementById('refreshBut')
-let city = document.getElementById('city')
-let name = document.getElementById('nameEl')
-let age = document.getElementById('ageEl')
-let color = document.getElementById("color")
-let genre = document.getElementById('genre')
-let ourRequest = new XMLHttpRequest();
-let pH = document.getElementById('placeHolder')
-
+let name = "poop";
 
 let request = async () =>{
-
+   
     let req = await fetch('http://www.filltext.com/?rows=1&name={firstName}~{lastName}&age={numberRange|10,60}&location={addressObject}&favoriteColor={number|9}&favoriteGenre={number|10}&skinColor={numberRange|1,20}&pretty=true')
-    let data = await req.json()
-    return data;
+    let ourData = await req.json()
+    let pfp;
+    mergeImages([`./public/Skintones/Skintones[${ourData[0].skinColor}].png`])
+    .then(b64 => pfp = b64)
+    let person = {
+        name: `${ourData[0].name}`,
+        age: `${ourData[0].age}`,
+        location: ` ${ourData[0].location.streetAddress}, ${ourData[0].location.city}, ${ourData[0].location.state}`,
+        favoriteColor: colors.get(ourData[0].favoriteColor),
+        favoriteGenre:  music.get(ourData[0].favoriteGenre),
+        pfp: pfp
+    }
+    return person
 }
-refresh.addEventListener('click',function(){
-    request().then(ourData =>{
-        name.innerText = "Name: "
-        age.innerText = "Age: "
-        color.innerText = "Favorite Color: "
-        genre.innerText = "Favorite Music Genre: "
-        city.innerText = "Location: "    
-        name.innerText += " " + ourData[0].name
-        age.innerText += " " + ourData[0].skinColor
-        color.innerHTML += "<br>" + colors.get(ourData[0].favoriteColor)
-        genre.innerText += " " + music.get(ourData[0].favoriteGenre)
-        city.innerText += ` ${ourData[0].location.streetAddress}, ${ourData[0].location.city}, ${ourData[0].location.state}`
-    })
-})
-
-
-
-request().then(ourData =>{
-    name.innerText += " " + ourData[0].name
-    age.innerText += " " + ourData[0].skinColor
-    color.innerHTML += "<br>" + colors.get(ourData[0].favoriteColor)
-    genre.innerText += " " + music.get(ourData[0].favoriteGenre)
-    city.innerText += ` ${ourData[0].location.streetAddress}, ${ourData[0].location.city}, ${ourData[0].location.state}`
-    mergeImages([`./Skintones/Skintones[${ourData[0].skinColor}].png`])
-    .then(b64 => skin.src = b64);
-})
-
-
-
+module.exports = request
 
 
 const music = new Map()
@@ -74,3 +49,26 @@ music.set(7, "Jazz")
 music.set(8, "Folk")
 music.set(9,"R&B")
 music.set(10, "Reggae")
+
+
+
+// refresh.addEventListener('click',function(){
+//     request().then(ourData =>{
+//         // name = "Name: "
+//         // age = "Age: "
+//         // // color.innerText = "Favorite Color: "
+//         // // genre.innerText = "Favorite Music Genre: "
+//         // // city.innerText = "Location: "    
+//         // // name += " " + ourData[0].name
+//         // // age.innerText += " " + ourData[0].skinColor
+//         // // color.innerHTML += "<br>" + colors.get(ourData[0].favoriteColor)
+//         // // genre.innerText += " " + music.get(ourData[0].favoriteGenre)
+//         // // city.innerText += ` ${ourData[0].location.streetAddress}, ${ourData[0].location.city}, ${ourData[0].location.state}`
+
+//         // module.exports = {
+//         //     name ,
+//         //     age
+//         // }
+//     })
+// })
+

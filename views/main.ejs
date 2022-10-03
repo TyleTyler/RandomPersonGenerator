@@ -11,25 +11,26 @@
     <h1>Profile Generator</h1>
     <div id = "main">
         <div class = "secondMain">
-            <div class = "pfp"> <img id = "pfp"></div>
+            <% let skin = `Skintones/Skintones[${skinColor}].png` %> 
+            <div class = "pfp"> <img src = <%= skin%> ></div>
             <div class = "infoHub"> 
                 <div class = "nameAge">
-                    <div id = "nameEl"> Name:</div>
-                    <div id = "ageEl"> Age:</div>
+                    <div id = "nameEl"> Name: <%= name %></div>
+                    <div id = "ageEl"> Age: <%= age %> </div>
                 </div>
                 <div class = "favorites">
-                    <div id = "color">Favorite Color: </div>
-                    <div id = "genre">Favorite Music Genre: </div>
+                    <div id = "color">Favorite Color: <%= favoriteColor %>  </div>
+                    <div id = "genre">Favorite Music Genre: <%= favoriteGenre %> </div>
                 </div>  
             </div>
-            <div class="location" id = "city">Location: </div>
+            <div class="location" id = "city">Location: <%= location %> </div>
         </div>
         <button id = "refreshBut" type="button" class = "refBut">
                 Refresh 
             <img class="refresh" src="refresh.png">
         </button>
+ 
     </div>
 </body>
-    <script  type="module" src="browser.js"></script>
 </html>
 
