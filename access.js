@@ -1,23 +1,24 @@
 
 const mergeImages = require('merge-images-v2')
 const fetch = require('cross-fetch');
+const Canvas = require('canvas')
 
-let name = "poop";
 
 let request = async () =>{
    
     let req = await fetch('http://www.filltext.com/?rows=1&name={firstName}~{lastName}&age={numberRange|10,60}&location={addressObject}&favoriteColor={number|9}&favoriteGenre={number|10}&skinColor={numberRange|1,20}&pretty=true')
-    let ourData = await req.json()
-    let pfp;
-    mergeImages([`./public/Skintones/Skintones[${ourData[0].skinColor}].png`])
-    .then(b64 => pfp = b64)
+    let ourData = await req.json()   
+    let b64 = await mergeImages([`./public/Skintones/Skintones[${ourData[0].skinColor}].png`, `./public/Shirts/Shirts[${ourData[0].favoriteColor}].png`],
+    {
+        Canvas :Canvas
+    })
     let person = {
         name: `${ourData[0].name}`,
         age: `${ourData[0].age}`,
         location: ` ${ourData[0].location.streetAddress}, ${ourData[0].location.city}, ${ourData[0].location.state}`,
         favoriteColor: colors.get(ourData[0].favoriteColor),
         favoriteGenre:  music.get(ourData[0].favoriteGenre),
-        pfp: pfp
+        pfp: b64
     }
     return person
 }

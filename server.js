@@ -25,8 +25,6 @@ app.get('/', (req, res) =>{
     })
 })
 
-
-genPfp().then(person =>{
-    console.log(person.pfp)
+app.use((req, res) => {
+  res.render('error')
 })
-
