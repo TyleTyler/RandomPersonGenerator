@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/style.css" text="text/css">
-</head>
+<%-include('./partials/html.ejs') %>
 <body>
-    <h1>Profile Generator</h1>
+    <%-include('./partials/header.ejs') %>
     <div id = "main">
         <div class = "secondMain">
             <% let skin = pfp %> 
@@ -25,10 +19,12 @@
             </div>
             <div class="location" id = "city">Location: <%= location %> </div>
         </div>
-        <button id = "refreshBut" type="button" class = "refBut">
+        <form action ='/' method = "GET">
+        <button type ="submit" id = "refreshBut" type="button" class = "refBut">
                 Refresh 
             <img class="refresh" src="refresh.png">
         </button>
+        </form>
  
     </div>
 </body>

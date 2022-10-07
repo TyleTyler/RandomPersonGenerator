@@ -1,4 +1,4 @@
-const { request } = require('express');
+
 const express = require('express')
 const app = express();
 const genPfp = require('./access.js')
@@ -19,9 +19,20 @@ app.get('/', (req, res) =>{
             location: person.location,
             favoriteColor: person.favoriteColor,
             favoriteGenre: person.favoriteGenre,
-            pfp: person.pfp
-        
+            pfp: person.pfp,
+            Header: "Profile Generator"
         })
+    })
+})
+
+app.get('/create-profile', (req, res) =>{
+    res.render('create', {
+        Header: "Create  a Profile"
+    })
+})
+app.get('/saved-profiles', (req, res) =>{
+    res.render('saved', {
+        Header: "Saved Profiles"
     })
 })
 

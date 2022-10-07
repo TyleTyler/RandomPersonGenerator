@@ -8,7 +8,9 @@ let request = async () =>{
    
     let req = await fetch('http://www.filltext.com/?rows=1&name={firstName}~{lastName}&age={numberRange|10,60}&location={addressObject}&favoriteColor={number|9}&favoriteGenre={number|10}&skinColor={numberRange|1,20}&pretty=true')
     let ourData = await req.json()   
-    let b64 = await mergeImages([`./public/Skintones/Skintones[${ourData[0].skinColor}].png`, `./public/Shirts/Shirts[${ourData[0].favoriteColor}].png`],
+    let skinColor = `./public/Skintones/Skintones[${ourData[0].skinColor}].png`
+    let shirtColor = `./public/Shirts/Shirts[${ourData[0].favoriteColor}].png`
+    let b64 = await mergeImages([`${skinColor}`, `${shirtColor}`],
     {
         Canvas :Canvas
     })
@@ -51,25 +53,4 @@ music.set(8, "Folk")
 music.set(9,"R&B")
 music.set(10, "Reggae")
 
-
-
-// refresh.addEventListener('click',function(){
-//     request().then(ourData =>{
-//         // name = "Name: "
-//         // age = "Age: "
-//         // // color.innerText = "Favorite Color: "
-//         // // genre.innerText = "Favorite Music Genre: "
-//         // // city.innerText = "Location: "    
-//         // // name += " " + ourData[0].name
-//         // // age.innerText += " " + ourData[0].skinColor
-//         // // color.innerHTML += "<br>" + colors.get(ourData[0].favoriteColor)
-//         // // genre.innerText += " " + music.get(ourData[0].favoriteGenre)
-//         // // city.innerText += ` ${ourData[0].location.streetAddress}, ${ourData[0].location.city}, ${ourData[0].location.state}`
-
-//         // module.exports = {
-//         //     name ,
-//         //     age
-//         // }
-//     })
-// })
 
