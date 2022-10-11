@@ -2,8 +2,19 @@
 const express = require('express')
 const app = express();
 const genPfp = require('./access.js')
+const mongoose = require('mongoose')
+const Profile = require('./modles/profile');
+const { render } = require('ejs');
 
-app.listen(3000)
+const dbUri = 'mongodb+srv://wilsonr:test1234@cluster0.rrqn4vx.mongodb.net/SavedProfiles?retryWrites=true&w=majority'
+mongoose.connect(dbUri).then(res => {
+    console.log("Connected to DB")
+    app.listen(3000)
+}).catch(err => {
+    console.log("Could not connect to Database")
+})
+
+
 
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'))
@@ -19,8 +30,8 @@ app.get('/', (req, res) =>{
             location: person.location,
             favoriteColor: person.favoriteColor,
             favoriteGenre: person.favoriteGenre,
-            pfp: person.pfp,
-            Header: "Profile Generator"
+            Header: "Profile Generator",
+            pfp: person.pfp
         })
     })
 })
@@ -31,11 +42,30 @@ app.get('/create-profile', (req, res) =>{
     })
 })
 app.get('/saved-profiles', (req, res) =>{
-    res.render('saved', {
-        Header: "Saved Profiles"
+    genPfp().then(person => {
+        const profile = new Profile({
+            name : person.name,
+            age: person.age,
+            location: person.location,
+            favoriteColor: person.favoriteColor,
+            favoriteGenre: person.favoriteGenre
+        })
+        profile.save()
+        .then(result =>{
+            Profile.find()
+            .then(result =>{
+                res.render('saved', { Header: "Saved-Profiles", list : result})
+            })
+            .catch(err =>{
+                console.log(err)
+            })
+        }).catch(err =>{
+            res.send(err)
+        })
     })
 })
 
 app.use((req, res) => {
   res.render('error')
 })
+

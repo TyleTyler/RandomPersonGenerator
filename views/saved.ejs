@@ -3,5 +3,8 @@
     <%-include('./partials/html.ejs') %>
 <body>
     <%- include('./partials/header.ejs')%>
+    <% list.forEach(person =>{ %>
+        <div> <%=`${person.name} : ${person.location}`%> </div>
+  <% }) %> 
 </body>
 </html>
