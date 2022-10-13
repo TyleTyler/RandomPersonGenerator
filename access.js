@@ -26,7 +26,7 @@ let request = async () =>{
         location: ` ${ourData[0].location.streetAddress}, ${ourData[0].location.city}, ${ourData[0].location.state}`,
         favoriteColor: colors.get(ourData[0].favoriteColor),
         favoriteGenre:  music.get(ourData[0].favoriteGenre),
-        pfp : image
+        // pfp : image
     }
     return person
   

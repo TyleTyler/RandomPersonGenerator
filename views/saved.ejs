@@ -3,8 +3,13 @@
     <%-include('./partials/html.ejs') %>
 <body>
     <%- include('./partials/header.ejs')%>
+    <section class = "saveHub">
     <% list.forEach(person =>{ %>
-        <div> <%=`${person.name} : ${person.location}`%> </div>
+        <div class = "savedInfo">
+            <img class = "savedPfp" src = "/pfpComponents/pfp.png">
+            <%=person%> 
+        </div>
   <% }) %> 
+    </section>
 </body>
 </html>

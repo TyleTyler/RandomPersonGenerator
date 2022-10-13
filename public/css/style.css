@@ -78,6 +78,28 @@ h1{
     height: 60%;
     background-color: aliceblue;
 }
+.savedInfo{
+    display: flex;
+    flex-direction: column;
+    border-radius: 5%;
+    font-size: 3rem;
+    width: 30%;
+    height: fit-content;
+    background-color: aliceblue;
+    transform: scale(0.5);
+}
+.savedPfp{
+
+}
+.saveHub{
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    width: 80vw;
+    height: 80vh;
+    background-color: aqua;
+    justify-content: space-evenly;
+}
 
 .infoHub{
     column-gap: 100px;
