@@ -7,11 +7,12 @@ html{
 }
 
 body{
+    overflow-x: hidden;
+    overflow-y: scroll;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     background-color: pink;
-    overflow: hidden;
     display: flex;
     width: 100vw;
     height: 100vh;
@@ -47,6 +48,7 @@ h1{
     margin-left: 5%;
 }
 #main{
+    margin-left: 10%;
     padding-bottom: 5%;
     background-color: rgb(255, 192, 203);
     width: 70%;
@@ -74,9 +76,39 @@ h1{
     justify-content: center;
     border-radius: 5%;
     margin-top: 2%;
+    margin-left: 0%;
     width: 40%;
     height: 60%;
     background-color: aliceblue;
+}
+.savedInfo{
+    display: flex;
+    flex-direction: column;
+    border-radius: 5%;
+    font-size: 3rem;
+    width: 30%;
+    height: 20%;
+    justify-content: center;
+    align-items: center;
+    background-color: aliceblue;
+    transform: scale(0.5);
+}
+.savedPfp{
+    transform: scale(0.5);
+} 
+.pfpname{
+    margin-top: -50%;
+}
+.saveHub{
+    
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    width: 80vw;
+    height: fit-content;
+    justify-content: space-evenly;
+    column-gap: -10%;
+    row-gap: -50%;
 }
 
 .infoHub{

@@ -7,7 +7,7 @@ const fs = require('fs')
 
 let request = async () =>{
    
-    let req = await fetch('http://www.filltext.com/?rows=1&name={firstName}~{lastName}&age={numberRange|10,60}&location={addressObject}&favoriteColor={number|9}&favoriteGenre={number|10}&skinColor={numberRange|1,20}&eyes={numberRange|1,3}&pretty=true')
+    let req = await fetch('http://www.filltext.com/?rows=1&fname={firstName}&lname={lastName}&age={numberRange|10,60}&location={addressObject}&favoriteColor={number|9}&favoriteGenre={number|10}&skinColor={numberRange|1,20}&eyes={numberRange|1,3}&pretty=true')
     let ourData = await req.json()
     let eyes =   `./public/Eyes/Eyes[${ourData[0].eyes}].png`
     let skinColor = `./public/Skintones/Skintones[${ourData[0].skinColor}].png`
@@ -21,12 +21,13 @@ let request = async () =>{
     
     fs.writeFileSync("./public/pfpComponents/pfp.png", image)
     let person = {
-        name: `${ourData[0].name}`,
+        fname : `${ourData[0].fname}`,
+        lname : `${ourData[0].lname}`,
+        name: `${ourData[0].fname} ${ourData[0].lname}`,
         age: `${ourData[0].age}`,
         location: ` ${ourData[0].location.streetAddress}, ${ourData[0].location.city}, ${ourData[0].location.state}`,
         favoriteColor: colors.get(ourData[0].favoriteColor),
         favoriteGenre:  music.get(ourData[0].favoriteGenre),
-        pfp : image
     }
     return person
   

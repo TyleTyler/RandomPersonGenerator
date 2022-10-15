@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<%-include('./partials/html.ejs') %>
+<body>
+    <%-include('./partials/header.ejs') %>
+    <div id = "main">
+        <div class = "secondMain">
+            <div class = "pfp"> <img src = "/pfpComponents/pfp.png"></div>
+            <div class = "infoHub"> 
+                <div class = "nameAge">
+                    <div id = "nameEl"> Name: <%= pfp.name %></div>
+                    <div id = "ageEl" > Age: <%= pfp.age %> </div>
+                </div>
+                <div class = "favorites">
+                    <div id = "color" >Favorite Color: <%= pfp.favoriteColor %>  </div>
+                    <div id = "genre" >Favorite Music Genre: <%= pfp.favoriteGenre %> </div>
+                </div>  
+            </div>
+            <div class="location" id = "city">Location: <%= pfp.location %> </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -5,31 +5,37 @@
     <%-include('./partials/header.ejs') %>
     <div id = "main">
         <div class = "secondMain">
-            <% let skin = pfp %> 
+            
+
             <div class = "pfp"> <img src = "/pfpComponents/pfp.png"></div>
             <div class = "infoHub"> 
                 <div class = "nameAge">
                     <div id = "nameEl"> Name: <%= name %></div>
-                    <div id = "ageEl"> Age: <%= age %> </div>
+                    <div id = "ageEl" > Age: <%= age %> </div>
                 </div>
                 <div class = "favorites">
-                    <div id = "color">Favorite Color: <%= favoriteColor %>  </div>
-                    <div id = "genre">Favorite Music Genre: <%= favoriteGenre %> </div>
+                    <div id = "color" >Favorite Color: <%= favoriteColor %>  </div>
+                    <div id = "genre" >Favorite Music Genre: <%= favoriteGenre %> </div>
                 </div>  
             </div>
             <div class="location" id = "city">Location: <%= location %> </div>
         </div>
         <div class = "buttons">
-        <form action ='/' method = "GET">
-        <button type ="submit" id = "refreshBut" type="button" class = "refBut">
-                Refresh 
-            <img class="refresh" src="refresh.png">
+
+        <form action ='/saved-profiles' method = "POST">
+        <button class = "refBut">
+            <input type = "hidden" value = "<%=fname%> <%=lname%>" name = "name">
+            <input type = "hidden" value = "<%=age%>" name = "age">
+            <input type = "hidden" value = "<%=favoriteColor%>" name = "favoriteColor">
+            <input type = "hidden" value = "<%=favoriteGenre%>" name = "favoriteGenre">
+            <input type = "hidden" value = "<%=location%>" name = "location">
+                Save 
         </button>
         </form>
-        <form action ='/saved-profiles' method = "post">
+        <form action ='/' method = "GET">
             <button type ="submit" id = "refreshBut" type="button" class = "refBut">
-                    Save 
-                <img>
+                    Refresh 
+                <img class="refresh" src="refresh.png">
             </button>
             </form>
         </div>

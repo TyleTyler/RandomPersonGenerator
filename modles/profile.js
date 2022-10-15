@@ -1,3 +1,4 @@
+const images = require('images');
 const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema;
@@ -20,6 +21,10 @@ const profileSchema = new Schema({
         Required:  true
     },
     favoriteGenre: {
+        type : String,
+        Required : true
+    },
+    picture : {
         type : String,
         Required : true
     }
