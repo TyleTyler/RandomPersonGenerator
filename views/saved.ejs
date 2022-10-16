@@ -4,7 +4,8 @@
 <body>
     <%- include('./partials/header.ejs')%>
     <section class = "saveHub">
-    <% list.forEach(person =>{ %>
+        <% list.forEach(person =>{ %>
+       <% if(pfp.getFile(person.name + "'s Profile")){console.log("exists")}%> 
         <div class = "savedInfo">
              <a class = "savedPfp" href = "/saved-profiles/<%=person.id%>"><img src = "/pfpComponents/pfp.png"> </a>
             <div><%=person.name%></div> 
